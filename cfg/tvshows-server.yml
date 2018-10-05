@@ -1,0 +1,10 @@
+
+# HTTP Server
+server:
+  port: 0   # HTTP port
+
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:1111/eureka/
