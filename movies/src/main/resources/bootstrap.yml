@@ -1,3 +1,6 @@
 spring:
-  application:
-    name: movies-service
+  cloud:
+    config:
+      failFast: true
+      discovery:
+        enabled: true

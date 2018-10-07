@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: tvshows-service
+    name: tvshows
 
 logging:
   file: logs/${spring.application.name}.log
