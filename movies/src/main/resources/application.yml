@@ -1,0 +1,10 @@
+
+server:
+  port: 3001
+
+spring:
+  application:
+    name: movies-server
+
+logging:
+  file: logs/${spring.application.name}.log
