@@ -2,5 +2,4 @@ spring:
   cloud:
     config:
       failFast: true
-      discovery:
-        enabled: true
+      uri: http://localhost:8888

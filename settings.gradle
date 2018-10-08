@@ -8,3 +8,11 @@
  */
 
 rootProject.name = 'showltan'
+
+// Cloud
+include 'config'
+include 'discovery'
+
+// Services
+include 'movies'
+include 'tvshows'
