@@ -26,10 +26,17 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
+
+    runtimeOnly('com.h2database:h2')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+
     implementation('org.springframework.boot:spring-boot-starter-actuator')
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard')
     implementation('org.springframework.cloud:spring-cloud-config-client')
     compileOnly('org.projectlombok:lombok:1.16.20')
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 

@@ -1,8 +1,11 @@
 
 rootProject.name = 'showltan'
 
+// Cloud
 include 'config'
 include 'discovery'
 
+// Services
+include 'users'
 include 'movies'
 include 'tvshows'
