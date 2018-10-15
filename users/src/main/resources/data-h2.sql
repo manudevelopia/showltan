@@ -2,8 +2,7 @@ INSERT INTO USER( EMAIL, NAME, SURNAME) VALUES
 ('manu@showltan.com', 'Manu', 'Garcia');
 
 INSERT INTO TAG(WORD) VALUES
-('Ganster');
-
+  ('Ganster');
 
 INSERT INTO USER_TAGS (USER_EMAIL, TAGS_WORD ) VALUES
 ('manu@showltan.com','Ganster');
