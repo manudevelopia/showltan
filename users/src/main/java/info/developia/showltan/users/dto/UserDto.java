@@ -17,8 +17,7 @@ public class UserDto {
 
     private String email;
     private String name;
-    private String surnameFirst;
-    private String surnameSecond;
+    private String surname;
 
     private Set<Movie> movies;
     private Set<TvShow> tvShows;

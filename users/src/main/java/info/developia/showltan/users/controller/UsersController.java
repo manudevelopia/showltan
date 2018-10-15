@@ -2,6 +2,7 @@ package info.developia.showltan.users.controller;
 
 import info.developia.showltan.users.domain.Movie;
 import info.developia.showltan.users.domain.TvShow;
+import info.developia.showltan.users.dto.UserDto;
 import info.developia.showltan.users.model.User;
 import info.developia.showltan.users.service.MovieService;
 import info.developia.showltan.users.service.TvShowService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
@@ -33,20 +35,28 @@ public class UsersController {
     }
 
     @GetMapping("/{email}")
-    ResponseEntity<User> getByEmail(@PathVariable("email") String email){
+    ResponseEntity<UserDto> getByEmail(@PathVariable("email") String email){
         Optional<User> user = userService.findByEmail(email);
 
         return user
-                .map(u -> new ResponseEntity<>(fullFillUser(user.get()), HttpStatus.OK))
+                .map(u -> new ResponseEntity<>(fullFillUserDto(user.get()), HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    private User fullFillUser(User user) {
-        Optional<Set<Movie>> movies = movieService.findByDirector("");
+    private UserDto fullFillUserDto(User user) {
+        UserDto userDto = UserDto.builder()
+                .email(user.getEmail())
+                .name(user.getName())
+                .surname(user.getSurname())
+                .build();
 
-        Optional<Set<TvShow>> tvShows = tvShowService.findByDirector("");
+        Optional<Set<Movie>> movies = movieService.findByTags(user.getTags());
+        userDto.setMovies(movies.orElse(Collections.emptySet()));
 
-        return user;
+        Optional<Set<TvShow>> tvShows = tvShowService.findByTags(user.getTags());
+        userDto.setTvShows(tvShows.orElse(Collections.emptySet()));
+
+        return userDto;
     }
 
 }

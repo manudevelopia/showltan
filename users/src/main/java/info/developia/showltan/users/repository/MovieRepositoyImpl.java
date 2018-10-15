@@ -1,6 +1,7 @@
 package info.developia.showltan.users.repository;
 
 import info.developia.showltan.users.domain.Movie;
+import info.developia.showltan.users.model.Tag;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -26,6 +27,11 @@ public class MovieRepositoyImpl implements MovieRepositoy {
 
     @Override
     public Optional<Set<Movie>> findByDirector(String director) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Set<Movie>> findByTags(Set<Tag> tags) {
         return Optional.empty();
     }
 

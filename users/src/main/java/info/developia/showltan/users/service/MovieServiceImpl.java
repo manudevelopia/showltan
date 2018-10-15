@@ -1,6 +1,7 @@
 package info.developia.showltan.users.service;
 
 import info.developia.showltan.users.domain.Movie;
+import info.developia.showltan.users.model.Tag;
 import info.developia.showltan.users.repository.MovieRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Optional<Set<Movie>> findByDirector(String director) {
         return movieRepositoy.findByDirector(director);
+    }
+
+    @Override
+    public Optional<Set<Movie>> findByTags(Set<Tag> tags) {
+        return movieRepositoy.findByTags(tags);
     }
 
 }
