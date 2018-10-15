@@ -3,6 +3,7 @@ package info.developia.showltan.users.controller;
 import info.developia.showltan.users.domain.Movie;
 import info.developia.showltan.users.domain.TvShow;
 import info.developia.showltan.users.dto.UserDto;
+import info.developia.showltan.users.model.Tag;
 import info.developia.showltan.users.model.User;
 import info.developia.showltan.users.service.MovieService;
 import info.developia.showltan.users.service.TvShowService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/users")
@@ -35,7 +37,7 @@ public class UsersController {
     }
 
     @GetMapping("/{email}")
-    ResponseEntity<UserDto> getByEmail(@PathVariable("email") String email){
+    ResponseEntity<UserDto> getByEmail(@PathVariable String email) {
         Optional<User> user = userService.findByEmail(email);
 
         return user
@@ -48,6 +50,7 @@ public class UsersController {
                 .email(user.getEmail())
                 .name(user.getName())
                 .surname(user.getSurname())
+                .tags(user.getTags().stream().map(Tag::getWord).collect(Collectors.toSet()))
                 .build();
 
         Optional<Set<Movie>> movies = movieService.findByTags(user.getTags());
