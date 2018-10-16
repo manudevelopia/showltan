@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
@@ -15,12 +16,16 @@ import java.util.Set;
 @RequestMapping("/movies")
 public class MoviesController {
 
-    @Autowired
-    private MoviesService moviesService;
+    private final MoviesService moviesService;
 
-    @GetMapping("/all")
-    ResponseEntity<Set<Movies>> getAll() {
-        return moviesService.getLast()
+    @Autowired
+    public MoviesController(MoviesService moviesService) {
+        this.moviesService = moviesService;
+    }
+
+    @GetMapping("/{tags}")
+    ResponseEntity<Set<Movies>> getBtTags(@RequestParam Set<String> tags) {
+        return moviesService.getByTags(tags)
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
