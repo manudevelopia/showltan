@@ -1,6 +1,6 @@
 package info.developia.showltan.movies.controller;
 
-import info.developia.showltan.movies.model.Movies;
+import info.developia.showltan.movies.model.Movie;
 import info.developia.showltan.movies.model.Tag;
 import info.developia.showltan.movies.service.MoviesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,21 +27,21 @@ public class MoviesController {
     }
 
     @GetMapping(params = "tags")
-    ResponseEntity<List<Movies>> getByYear(@RequestParam("tags") Set<Tag> tags){
+    ResponseEntity<List<Movie>> getByYear(@RequestParam("tags") Set<Tag> tags){
         return moviesService.getByTags(tags)
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping("/all")
-    ResponseEntity<List<Movies>> getAll(){
+    ResponseEntity<List<Movie>> getAll(){
         return moviesService.getAll()
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping(params = "year")
-    ResponseEntity<List<Movies>> getByYear(@RequestParam("year") String year){
+    ResponseEntity<List<Movie>> getByYear(@RequestParam("year") String year){
         return moviesService.getByYear(LocalDate.parse(year))
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));

@@ -1,7 +1,7 @@
 package info.developia.showltan.movies.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import info.developia.showltan.movies.model.Movies;
+import info.developia.showltan.movies.model.Movie;
 import info.developia.showltan.movies.model.Tag;
 import info.developia.showltan.movies.repository.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,30 +25,30 @@ public class MoviesServiceImpl implements MoviesService {
 
     @Override
     @HystrixCommand(fallbackMethod = "getLastMoviesDefault")
-    public Optional<List<Movies>> getByTags(Set<Tag> tags) {
+    public Optional<List<Movie>> getByTags(Set<Tag> tags) {
         return moviesRepository.findByTags(tags);
     }
 
     @Override
-    public Optional<List<Movies>> getAll() {
+    public Optional<List<Movie>> getAll() {
         return Optional.of(moviesRepository.findAll());
     }
 
     @Override
-    public Optional<List<Movies>> getByYear(LocalDate year) {
+    public Optional<List<Movie>> getByYear(LocalDate year) {
         return moviesRepository.findByYear(year);
     }
 
-    public Optional<Set<Movies>> getLastMoviesDefault() {
-        Set<Movies> movies = new HashSet<>();
+    public Optional<Set<Movie>> getLastMoviesDefault() {
+        Set<Movie> movies = new HashSet<>();
 
-        movies.add(Movies.builder().title("Reservoir Dogs").director("Quentin Tarantino").build());
-        movies.add(Movies.builder().title("Pulp Fiction").director("Quentin Tarantino").build());
-        movies.add(Movies.builder().title("Jackie Brown").director("Quentin Tarantino").build());
-        movies.add(Movies.builder().title("Death Proof").director("Quentin Tarantino").build());
-        movies.add(Movies.builder().title("Django").director("Quentin Tarantino").build());
-        movies.add(Movies.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
-        movies.add(Movies.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("Reservoir Dogs").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("Pulp Fiction").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("Jackie Brown").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("Death Proof").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("Django").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
+        movies.add(Movie.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
 
         return Optional.of(movies);
     }
