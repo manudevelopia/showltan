@@ -2,11 +2,14 @@ package info.developia.showltan.movies.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import info.developia.showltan.movies.model.Movies;
+import info.developia.showltan.movies.model.Tag;
 import info.developia.showltan.movies.repository.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -22,8 +25,18 @@ public class MoviesServiceImpl implements MoviesService {
 
     @Override
     @HystrixCommand(fallbackMethod = "getLastMoviesDefault")
-    public Optional<Set<Movies>> getByTags(Set<String> tags) {
+    public Optional<List<Movies>> getByTags(Set<Tag> tags) {
         return moviesRepository.findByTags(tags);
+    }
+
+    @Override
+    public Optional<List<Movies>> getAll() {
+        return Optional.of(moviesRepository.findAll());
+    }
+
+    @Override
+    public Optional<List<Movies>> getByYear(LocalDate year) {
+        return moviesRepository.findByYear(year);
     }
 
     public Optional<Set<Movies>> getLastMoviesDefault() {

@@ -18,7 +18,4 @@ public class Tag {
     @Id
     private String word;
 
-    @CreatedDate
-    private LocalDate timestamp;
-
 }
