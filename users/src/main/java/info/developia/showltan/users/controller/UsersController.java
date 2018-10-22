@@ -53,10 +53,10 @@ public class UsersController {
                 .tags(user.getTags().stream().map(Tag::getWord).collect(Collectors.toSet()))
                 .build();
 
-        Optional<List<Movie>> movies = movieService.findAll();
+        Optional<List<Movie>> movies = movieService.findAllMovies();
         userDto.setMovies(movies.orElse(Collections.emptyList()));
 
-        Optional<List<TvShow>> tvShows = tvShowService.findAll();
+        Optional<List<TvShow>> tvShows = tvShowService.findAllTvShows();
         userDto.setTvShows(tvShows.orElse(Collections.emptyList()));
 
         return userDto;

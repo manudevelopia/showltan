@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface MovieService {
 
-    Optional<List<Movie>> findAll();
+    Optional<List<Movie>> findAllMovies();
 
 }

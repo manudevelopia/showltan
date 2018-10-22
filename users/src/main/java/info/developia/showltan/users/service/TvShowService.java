@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface TvShowService {
 
-    Optional<List<TvShow>> findAll();
+    Optional<List<TvShow>> findAllTvShows();
 
 }

@@ -24,3 +24,5 @@ spring:
 
 logging:
   file: logs/${spring.application.name}.log
+
+management.endpoints.web.exposure.include: hystrix.stream
