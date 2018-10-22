@@ -7,25 +7,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
+import java.util.List;
 
 @RestController
-@RequestMapping("/TvShow")
+@RequestMapping("/tvshows")
 public class TvShowController {
 
     private final TvShowService TvShowervice;
 
     @Autowired
-    public TvShowController(TvShowService TvShowervice) {
-        this.TvShowervice = TvShowervice;
+    public TvShowController(TvShowService TvShowService) {
+        this.TvShowervice = TvShowService;
     }
 
-    @GetMapping("/{tags}")
-    ResponseEntity<Set<TvShow>> getBtTags(@RequestParam Set<String> tags) {
-        return TvShowervice.getByTags(tags)
+    @GetMapping("/all")
+    ResponseEntity<List<TvShow>> getAll() {
+        return TvShowervice.getAll()
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
