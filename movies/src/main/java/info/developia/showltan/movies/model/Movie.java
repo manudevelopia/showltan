@@ -4,16 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.UniqueConstraint;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Data
@@ -25,7 +20,6 @@ public class Movie {
     @Id
     @GeneratedValue
     private Long id;
-    @UniqueElements
     private String title;
     private String director;
     private LocalDate year;
