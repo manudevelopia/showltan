@@ -2,12 +2,12 @@ package info.developia.showltan.users.dto;
 
 import info.developia.showltan.users.domain.Movie;
 import info.developia.showltan.users.domain.TvShow;
-import info.developia.showltan.users.model.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -22,7 +22,7 @@ public class UserDto {
 
     private Set<String> tags;
 
-    private Set<Movie> movies;
-    private Set<TvShow> tvShows;
+    private List<Movie> movies;
+    private List<TvShow> tvShows;
 
 }

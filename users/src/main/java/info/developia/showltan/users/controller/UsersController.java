@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -53,11 +53,11 @@ public class UsersController {
                 .tags(user.getTags().stream().map(Tag::getWord).collect(Collectors.toSet()))
                 .build();
 
-        Optional<Set<Movie>> movies = movieService.findByTags(user.getTags());
-        userDto.setMovies(movies.orElse(Collections.emptySet()));
+        Optional<List<Movie>> movies = movieService.findAll();
+        userDto.setMovies(movies.orElse(Collections.emptyList()));
 
-        Optional<Set<TvShow>> tvShows = tvShowService.findByTags(user.getTags());
-        userDto.setTvShows(tvShows.orElse(Collections.emptySet()));
+        Optional<List<TvShow>> tvShows = tvShowService.findAll();
+        userDto.setTvShows(tvShows.orElse(Collections.emptyList()));
 
         return userDto;
     }

@@ -1,16 +1,16 @@
 package info.developia.showltan.users.repository;
 
-import info.developia.showltan.users.domain.TvShow;
+import info.developia.showltan.users.domain.Movie;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class TvShowRepositoryImpl implements TvShowRepository {
+public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
-    public Optional<List<TvShow>> findAll() {
+    public Optional<List<Movie>> findAll() {
         return Optional.empty();
     }
 

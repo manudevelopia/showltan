@@ -1,47 +1,26 @@
 package info.developia.showltan.users.service;
 
 import info.developia.showltan.users.domain.Movie;
-import info.developia.showltan.users.model.Tag;
-import info.developia.showltan.users.repository.MovieRepositoy;
+import info.developia.showltan.users.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
 
-    private final MovieRepositoy movieRepositoy;
+    private final MovieRepository movieRepository;
 
     @Autowired
-    public MovieServiceImpl(MovieRepositoy movieRepositoy) {
-        this.movieRepositoy = movieRepositoy;
+    public MovieServiceImpl(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
     }
 
     @Override
-    public Optional<Movie> findById(String id) {
-        return movieRepositoy.findById(id);
-    }
-
-    @Override
-    public Optional<Movie> findByIds(Set<String> ids) {
-        return movieRepositoy.findByIds(ids);
-    }
-
-    @Override
-    public Optional<Movie> findByTitle(String title) {
-        return movieRepositoy.findByTitle(title);
-    }
-
-    @Override
-    public Optional<Set<Movie>> findByDirector(String director) {
-        return movieRepositoy.findByDirector(director);
-    }
-
-    @Override
-    public Optional<Set<Movie>> findByTags(Set<Tag> tags) {
-        return movieRepositoy.findByTags(tags);
+    public Optional<List<Movie>> findAll() {
+        return movieRepository.findAll();
     }
 
 }
