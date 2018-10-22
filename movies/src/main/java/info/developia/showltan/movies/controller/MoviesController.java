@@ -1,7 +1,6 @@
 package info.developia.showltan.movies.controller;
 
 import info.developia.showltan.movies.model.Movie;
-import info.developia.showltan.movies.model.Tag;
 import info.developia.showltan.movies.service.MoviesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.List;
 import java.util.Set;
 
@@ -24,13 +26,6 @@ public class MoviesController {
     @Autowired
     public MoviesController(MoviesService moviesService) {
         this.moviesService = moviesService;
-    }
-
-    @GetMapping(params = "tags")
-    ResponseEntity<List<Movie>> getByYear(@RequestParam("tags") Set<Tag> tags){
-        return moviesService.getByTags(tags)
-                .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping("/all")

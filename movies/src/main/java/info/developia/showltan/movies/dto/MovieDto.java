@@ -1,4 +1,4 @@
-package info.developia.showltan.movies.model;
+package info.developia.showltan.movies.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,21 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.UniqueConstraint;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Movie {
+public class MovieDto {
 
     @Id
     @GeneratedValue
