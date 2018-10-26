@@ -4,6 +4,7 @@ rootProject.name = 'showltan'
 // Cloud
 include 'config'
 include 'discovery'
+include 'dashboard'
 
 // Services
 include 'users'
