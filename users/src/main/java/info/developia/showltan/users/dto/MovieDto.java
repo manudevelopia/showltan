@@ -1,4 +1,4 @@
-package info.developia.showltan.users.domain;
+package info.developia.showltan.users.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TvShow {
+public class MovieDto {
 
     // id should be IMDB or similar inspired
     private String title;
     private String director;
-
+    
 }

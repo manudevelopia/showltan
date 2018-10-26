@@ -1,7 +1,7 @@
 package info.developia.showltan.users.controller;
 
-import info.developia.showltan.users.domain.Movie;
-import info.developia.showltan.users.domain.TvShow;
+import info.developia.showltan.users.dto.MovieDto;
+import info.developia.showltan.users.dto.TvShowDto;
 import info.developia.showltan.users.dto.UserDto;
 import info.developia.showltan.users.model.Tag;
 import info.developia.showltan.users.model.User;
@@ -53,11 +53,11 @@ public class UsersController {
                 .tags(user.getTags().stream().map(Tag::getWord).collect(Collectors.toSet()))
                 .build();
 
-        Optional<List<Movie>> movies = movieService.findAllMovies();
-        userDto.setMovies(movies.orElse(Collections.emptyList()));
+        Optional<List<MovieDto>> movies = movieService.findAllMovies();
+        userDto.setMovieDtos(movies.orElse(Collections.emptyList()));
 
-        Optional<List<TvShow>> tvShows = tvShowService.findAllTvShows();
-        userDto.setTvShows(tvShows.orElse(Collections.emptyList()));
+        Optional<List<TvShowDto>> tvShows = tvShowService.findAllTvShows();
+        userDto.setTvShowDtos(tvShows.orElse(Collections.emptyList()));
 
         return userDto;
     }

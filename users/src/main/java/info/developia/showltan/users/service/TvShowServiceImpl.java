@@ -1,7 +1,7 @@
 package info.developia.showltan.users.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import info.developia.showltan.users.domain.TvShow;
+import info.developia.showltan.users.dto.TvShowDto;
 import info.developia.showltan.users.repository.TvShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,29 +22,22 @@ public class TvShowServiceImpl implements TvShowService {
 
     @Override
     @HystrixCommand(fallbackMethod = "getLastTvShowDefault")
-    public Optional<List<TvShow>> findAllTvShows() {
-//        return tvShowRepository.findAllMovies();
-
-        List<TvShow> tvShows = new ArrayList<>();
-
-        tvShows.add(TvShow.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
-
-        return Optional.of(tvShows);
+    public Optional<List<TvShowDto>> findAllTvShows() {
+        return Optional.of(tvShowRepository.findAll());
     }
 
-    public Optional<List<TvShow>> getLastTvShowDefault() {
-        List<TvShow> tvShows = new ArrayList<>();
+    public Optional<List<TvShowDto>> getLastTvShowDefault() {
+        List<TvShowDto> tvShowDtos = new ArrayList<>();
 
-        tvShows.add(TvShow.builder().title("Reservoir Dogs").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("Pulp Fiction").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("Jackie Brown").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("Death Proof").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("Django").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
-        tvShows.add(TvShow.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("Reservoir Dogs").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("Pulp Fiction").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("Jackie Brown").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("Death Proof").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("Django").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
+        tvShowDtos.add(TvShowDto.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
 
-        return Optional.of(tvShows);
+        return Optional.of(tvShowDtos);
     }
 
 }

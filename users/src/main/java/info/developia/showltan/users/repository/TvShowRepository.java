@@ -1,12 +1,11 @@
 package info.developia.showltan.users.repository;
 
-import info.developia.showltan.users.domain.TvShow;
+import info.developia.showltan.users.dto.TvShowDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface TvShowRepository {
 
-    Optional<List<TvShow>> findAll();
+    List<TvShowDto> findAll();
 
 }

@@ -1,7 +1,5 @@
 package info.developia.showltan.users.dto;
 
-import info.developia.showltan.users.domain.Movie;
-import info.developia.showltan.users.domain.TvShow;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +20,7 @@ public class UserDto {
 
     private Set<String> tags;
 
-    private List<Movie> movies;
-    private List<TvShow> tvShows;
+    private List<MovieDto> movieDtos;
+    private List<TvShowDto> tvShowDtos;
 
 }
