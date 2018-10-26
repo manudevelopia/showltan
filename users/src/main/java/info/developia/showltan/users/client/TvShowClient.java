@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(name = "tvshows", url = "http://localhost:3002/tvshows")
+@FeignClient(name = "tvshows", url = "${showltan.services.tvshows}")
 public interface TvShowClient {
 
     @GetMapping("/all")
