@@ -10,8 +10,12 @@ import java.util.List;
 @Repository
 public class MovieRepositoryImpl implements MovieRepository {
 
+    private final MovieClient movieClient;
+
     @Autowired
-    private MovieClient movieClient;
+    public MovieRepositoryImpl(MovieClient movieClient) {
+        this.movieClient = movieClient;
+    }
 
     @Override
     public List<MovieDto> findAll() {

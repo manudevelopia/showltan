@@ -14,8 +14,8 @@ public class TvShowServiceImpl implements TvShowService {
     private TvShowRepository tvShowRepository;
 
     @Autowired
-    public TvShowServiceImpl(TvShowRepository TvShowRepository) {
-        this.tvShowRepository = TvShowRepository;
+    public TvShowServiceImpl(TvShowRepository tvShowService) {
+        this.tvShowRepository = tvShowService;
     }
 
     @Override

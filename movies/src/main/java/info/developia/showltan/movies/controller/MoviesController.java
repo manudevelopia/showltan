@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.temporal.ChronoField;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/movies")
@@ -29,14 +25,14 @@ public class MoviesController {
     }
 
     @GetMapping("/all")
-    ResponseEntity<List<Movie>> getAll(){
+    ResponseEntity<List<Movie>> getAll() {
         return moviesService.getAll()
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping(params = "year")
-    ResponseEntity<List<Movie>> getByYear(@RequestParam("year") String year){
+    ResponseEntity<List<Movie>> getByYear(@RequestParam("year") String year) {
         return moviesService.getByYear(LocalDate.parse(year))
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));

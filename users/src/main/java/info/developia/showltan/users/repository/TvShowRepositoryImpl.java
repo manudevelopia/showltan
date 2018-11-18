@@ -10,8 +10,12 @@ import java.util.List;
 @Repository
 public class TvShowRepositoryImpl implements TvShowRepository {
 
+    private final TvShowClient tvShowClient;
+
     @Autowired
-    private TvShowClient tvShowClient;
+    public TvShowRepositoryImpl(TvShowClient tvShowClient) {
+        this.tvShowClient = tvShowClient;
+    }
 
     @Override
     public List<TvShowDto> findAll() {

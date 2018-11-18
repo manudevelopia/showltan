@@ -15,16 +15,16 @@ import java.util.List;
 @RequestMapping("/tvshows")
 public class TvShowController {
 
-    private final TvShowService TvShowervice;
+    private final TvShowService tvShowService;
 
     @Autowired
-    public TvShowController(TvShowService TvShowService) {
-        this.TvShowervice = TvShowService;
+    public TvShowController(TvShowService tvShowService) {
+        this.tvShowService = tvShowService;
     }
 
     @GetMapping("/all")
     ResponseEntity<List<TvShow>> getAll() {
-        return TvShowervice.getAll()
+        return tvShowService.getAll()
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
