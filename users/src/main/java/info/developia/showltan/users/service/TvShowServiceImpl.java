@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TvShowServiceImpl implements TvShowService {
@@ -22,11 +21,11 @@ public class TvShowServiceImpl implements TvShowService {
 
     @Override
     @HystrixCommand(fallbackMethod = "getLastTvShowDefault")
-    public Optional<List<TvShowDto>> findAllTvShows() {
-        return Optional.of(tvShowRepository.findAll());
+    public List<TvShowDto> findAllTvShows() {
+        return tvShowRepository.findAll();
     }
 
-    public Optional<List<TvShowDto>> getLastTvShowDefault() {
+    public List<TvShowDto> getLastTvShowDefault() {
         List<TvShowDto> tvShowDtos = new ArrayList<>();
 
         tvShowDtos.add(TvShowDto.builder().title("Reservoir Dogs").director("Quentin Tarantino").build());
@@ -37,7 +36,7 @@ public class TvShowServiceImpl implements TvShowService {
         tvShowDtos.add(TvShowDto.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
         tvShowDtos.add(TvShowDto.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
 
-        return Optional.of(tvShowDtos);
+        return tvShowDtos;
     }
 
 }

@@ -23,11 +23,11 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     @HystrixCommand(fallbackMethod = "getLastMoviesDefault")
-    public Optional<List<MovieDto>> findAllMovies() {
-        return Optional.of(movieRepository.findAll());
+    public List<MovieDto> findAllMovies() {
+        return movieRepository.findAll();
     }
 
-    public Optional<List<MovieDto>> getLastMoviesDefault() {
+    public List<MovieDto> getLastMoviesDefault() {
         List<MovieDto> movieDtos = new ArrayList<>();
 
         movieDtos.add(MovieDto.builder().title("Reservoir Dogs").director("Quentin Tarantino").build());
@@ -38,6 +38,6 @@ public class MovieServiceImpl implements MovieService {
         movieDtos.add(MovieDto.builder().title("Inglorious Basterds").director("Quentin Tarantino").build());
         movieDtos.add(MovieDto.builder().title("The Hateful Eight").director("Quentin Tarantino").build());
 
-        return Optional.of(movieDtos);
+        return movieDtos;
     }
 }
